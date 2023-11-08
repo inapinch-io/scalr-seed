@@ -1,17 +1,17 @@
-data "scalr_vcs_provider" "example" {
-  name       = "vcs-name"
-  account_id = "acc-xxxxxxxxxx"
+data "scalr_vcs_provider" "github" {
+  name       = "inapinch"
+  account_id = var.account
 }
 
-data "scalr_environment" "example" {
-  name       = "env-name"
-  account_id = "acc-xxxxxxxxxx"
+data "scalr_environment" "default" {
+  name       = "Environment-A"
+  account_id = var.account
 }
 
 resource "scalr_workspace" "example" {
   name            = "my-workspace-name"
-  environment_id  = data.scalr_environment.example.id
-  vcs_provider_id = data.scalr_vcs_provider.example.id
+  environment_id  = data.scalr_environment.default.id
+  vcs_provider_id = data.scalr_vcs_provider.github.id
 
   working_directory = "example/path"
 
