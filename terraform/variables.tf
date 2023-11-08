@@ -1,3 +1,3 @@
-var "account" {
+variable "account" {
     type = string
 }
